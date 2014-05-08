@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="penagihan_ongkos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d53b06ad-814e-48dc-a111-f16302d03941">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT h.*,d.NOTERIMA,d.NOMUAT,d.BANYAK,d.BARANG,d.JUMLAH,
+d.SATUAN,d.NMPENGIRIM,d.NMPENERIMA,d.STATUS,d.stat,d.statname,
+d.jml_ongkos FROM v_m_tagih h INNER JOIN v_tt_tagih d
+ON h.NOKIRIM=d.NOKIRIM WHERE h.m_tagih_no='0001/V/14']]>
+	</queryString>
+	<field name="m_tagih_no" class="java.lang.String"/>
+	<field name="m_tagih_tgl" class="java.sql.Date"/>
+	<field name="m_tagih_fk" class="java.lang.String"/>
+	<field name="m_cek_no" class="java.lang.String"/>
+	<field name="m_cek_tgl" class="java.sql.Date"/>
+	<field name="m_cek_fk" class="java.lang.String"/>
+	<field name="NOKIRIM" class="java.lang.String"/>
+	<field name="TGLKIRIM" class="java.sql.Date"/>
+	<field name="NOPOL" class="java.lang.String"/>
+	<field name="KETERANGAN" class="java.lang.String"/>
+	<field name="stat" class="java.lang.String"/>
+	<field name="NOTERIMA" class="java.lang.String"/>
+	<field name="NOMUAT" class="java.lang.String"/>
+	<field name="BANYAK" class="java.lang.Integer"/>
+	<field name="BARANG" class="java.lang.String"/>
+	<field name="JUMLAH" class="java.math.BigDecimal"/>
+	<field name="SATUAN" class="java.lang.String"/>
+	<field name="NMPENGIRIM" class="java.lang.String"/>
+	<field name="NMPENERIMA" class="java.lang.String"/>
+	<field name="STATUS" class="java.lang.String"/>
+	<field name="statname" class="java.lang.String"/>
+	<field name="jml_ongkos" class="java.math.BigDecimal"/>
+	<variable name="variable1" class="java.lang.String"/>
+	<variable name="jml_ongkos_1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{jml_ongkos}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="67" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="91" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="17ae953e-bc89-4a90-bff6-370636e99b6d" x="0" y="51" width="555" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Lucida Bright" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERINCIAN PENAGIHAN ONGKOS]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="8f5d0278-e1f4-4bcd-9cdd-6c7e4e1b109d" x="0" y="0" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="747a8590-05d7-4e00-adaf-144ff956b839" x="1" y="71" width="68" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NO. STT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="089968c2-0c17-49e6-898b-719aea0160f1" x="69" y="71" width="50" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[KODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b8d8fc66-19d9-41c5-a0cc-cb5c4f13a02d" x="119" y="71" width="81" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[BANYAKNYA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6232163f-cb2f-4827-8c6c-effad3f0bfab" x="200" y="71" width="119" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[PENGIRIM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="81e887a0-1879-48e1-b34a-f1d69d661725" x="319" y="71" width="143" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[PENERIMA]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="2344a9a3-6191-4125-ae2c-a389ce8d5246" x="85" y="1" width="100" height="20"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{m_tagih_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0bec046b-b753-411a-bd4b-7986f703f91c" x="85" y="21" width="100" height="20"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{m_tagih_fk}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d65f0842-7542-4854-a69f-db81503f3a15" x="455" y="1" width="100" height="20"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{NOPOL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2263aa4e-2b17-4e84-b166-d62c48649130" x="0" y="1" width="68" height="20"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="98bde774-2659-4dae-897e-796dcc8234d1" x="68" y="1" width="17" height="20"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="84c2b0b6-e1d2-41d4-b227-2baeca0b0db9" x="68" y="21" width="17" height="20"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9b8add65-da0a-447c-a0e0-8935158c89cd" x="0" y="21" width="68" height="20"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[NO CEK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2cfd4475-efa9-4e0f-8e30-670d36c95a27" x="438" y="0" width="17" height="20"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c133eb31-b7e3-4577-8974-26017e384e85" x="370" y="0" width="68" height="20"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[NO POLISI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d990bdb0-1abc-4004-b8af-d1b95842f2dd" x="462" y="71" width="93" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[JML ONGKOS]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement uuid="03ce2c47-5270-4824-9fca-84678f17de97" x="1" y="0" width="68" height="15"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOMUAT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d521285e-f511-400a-a1ed-f1d0a08d1d46" x="69" y="0" width="50" height="15"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOTERIMA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1d3f5ae7-19c1-4d44-a4db-97c6c369cba1" x="119" y="0" width="81" height="15"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BANYAK}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="afa63ab7-e6ee-483d-9e75-57de20e2562e" x="200" y="0" width="119" height="15"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NMPENGIRIM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="00b485b8-be74-4c54-8064-f0edbbebe23d" x="319" y="0" width="143" height="15"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NMPENERIMA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="2e660850-738f-4a19-ba87-01ed5e52102a" x="462" y="0" width="93" height="15"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jml_ongkos}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="33" splitType="Stretch">
+			<line>
+				<reportElement uuid="58ea569f-8446-4f1a-9fe5-d831037fb917" x="1" y="0" width="554" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="5d82c028-2aa9-4d0a-bc37-9fc87e096e82" x="442" y="1" width="71" height="16"/>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="2e2224f4-70b8-49a1-b2d6-868cd0ac2424" x="513" y="1" width="42" height="16" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="143" splitType="Stretch">
+			<textField>
+				<reportElement uuid="797f7e81-9f00-413f-ba77-7e1d80a3294c" x="0" y="74" width="555" height="34"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{KETERANGAN}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9c9c5de2-0e75-4822-8e60-9daf1e70ae0f" x="0" y="54" width="119" height="20"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[KETERANGAN]]></text>
+			</staticText>
+			<textField pattern="dd-MMM-yyyy">
+				<reportElement uuid="041da357-085a-4514-9cca-3124b0c0467a" x="455" y="122" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="27a336f6-7425-4917-bf5d-8a9083a8fad6" x="390" y="122" width="65" height="15"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[JAKARTA]]></text>
+			</staticText>
+			<textField pattern="#,##0;(#,##0)">
+				<reportElement uuid="bc337e2c-6743-408f-a890-fcf4332d99af" x="462" y="0" width="93" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{jml_ongkos_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="5d5ba0ec-a5bb-4f3d-8b67-14f961e2cdb4" x="370" y="0" width="92" height="20"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL ONGKOS]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
