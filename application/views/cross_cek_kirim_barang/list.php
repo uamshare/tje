@@ -7,6 +7,7 @@
             "sPaginationType": "full_numbers",
             "sAjaxSource": BASEURL + "crosscek_kirim_barang/get_data",
             "sPaginationType": "bootstrap",
+            "aaSorting": [[ 1, "desc" ]],
             "oLanguage": {
                 "sLengthMenu": "_MENU_ records display"
             },

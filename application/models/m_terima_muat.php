@@ -23,7 +23,7 @@ class M_terima_muat extends CI_Model {
 
     function getRows($noterima) {
         $query = $this->db->query("SELECT * FROM mtt_muat a left join m_pengirim b on a.nmpengirim=b.nmpengirim
-				where nomor = '$noterima'");
+				where noterima = '$noterima'");
         return ($query->num_rows() > 0 ) ? $query->result_array() : FALSE;
     }
 
@@ -87,6 +87,7 @@ class M_terima_muat extends CI_Model {
     }
 
     function saveTtMuat($no, $jml, $status) {
+        //echo $no;
         for ($i = 0; $i < $jml; $i++) {
             $data[] = array(
                 'NOTERIMA' => $no,
@@ -100,6 +101,7 @@ class M_terima_muat extends CI_Model {
                 'ONGKOS' => $_POST['ongkos'][$i],
                 'JML_ONGKOS' => $_POST['jml_ongkos'][$i]
             );
+            $data[$i]['JML_ONGKOS'] = str_replace(".", "", $data[$i]['JML_ONGKOS']); 
         }
         return $this->db->insert_batch('tt_muat', $data);
     }

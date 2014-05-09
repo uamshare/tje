@@ -8,6 +8,7 @@
             "sPaginationType": "full_numbers",
             "sAjaxSource": "<?php echo base_url(); ?>terima_barang/get_data",
             "sPaginationType": "bootstrap",
+            "aaSorting": [[ 0, "desc" ]],
             "oLanguage": {
                 "sLengthMenu": "_MENU_ records"
             },

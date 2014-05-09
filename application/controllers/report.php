@@ -33,6 +33,25 @@ MTT_ANTRI.NOTERIMA='$noterima' AND TT_ANTRI.STATUS='ANTRI'");
         $this->phpjasperxml->outpage("I");    //page output method I:standard output  D:Download file
     }
     
+    function r_terima_muat($noterima) {
+        //echo "tes";
+        //$this->phpjasperxml->tescoba();
+        $noterima = $this->uri->segment(3) . '/' . $this->uri->segment(4) . '/' . $this->uri->segment(5);
+        //echo $noterima;
+        $xml = simplexml_load_file(base_url()."assets/reportfile/terima_muat.jrxml");
+        $this->phpjasperxml = new PHPJasperXML();
+//$this->phpjasperxml->debugsql=true;
+//$this->phpjasperxml->arrayParameter=array("parameter1"=>1);
+        $this->phpjasperxml->xml_dismantle($xml);
+        $this->phpjasperxml->queryString_handler("SELECT MTT_MUAT.NOTERIMA,MTT_MUAT.TGLTERIMA,MTT_MUAT.NOPOL,MTT_MUAT.NMPENGIRIM,(M_PENGIRIM.ALAMAT)AS ALAMAT1,
+MTT_MUAT.NMPENERIMA,(M_PENERIMA.ALAMAT)AS ALAMAT2,MTT_MUAT.STATUS,TT_MUAT.BANYAK,TT_MUAT.SATUAN,TT_MUAT.BARANG,TT_MUAT.JUMLAH,TT_MUAT.SAT,TT_MUAT.ONGKOS,TT_MUAT.JML_ONGKOS,CONCAT(MTT_MUAT.NOMOR,' ') AS NOMOR
+FROM (MTT_MUAT INNER JOIN TT_MUAT ON MTT_MUAT.NOTERIMA=TT_MUAT.NOTERIMA),M_PENGIRIM,M_PENERIMA
+WHERE MTT_MUAT.NMPENGIRIM=M_PENGIRIM.NMPENGIRIM AND MTT_MUAT.NMPENERIMA=M_PENERIMA.NMPENERIMA AND MTT_MUAT.NOTERIMA='$noterima'");
+
+        $this->phpjasperxml->transferDBtoArray($this->db->hostname, $this->db->username, $this->db->password, $this->db->database);
+        $this->phpjasperxml->outpage("I");    //page output method I:standard output  D:Download file
+    }
+    
     function r_crosscek_kirim_barang($no=''){
         $no = $this->uri->segment(3) . '/' . $this->uri->segment(4) . '/' . $this->uri->segment(5);
         $xml = simplexml_load_file(base_url()."assets/reportfile/crosscek_kirim_barang.jrxml");
