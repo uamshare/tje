@@ -8,8 +8,7 @@ body {
     margin-right: auto;
     padding-top: 40px;
     padding-bottom: 40px;
-    background-image: url('../img/back_log.jpg');
-    /*background-image: url('../../media/images/Background_Body.png');*/
+    background-image: url('../img/back_log.png');
 }
 /* Custom container */
 .container-narrow {
@@ -36,7 +35,7 @@ body {
     box-shadow: 1px 1px 55px 0px rgba(240,211,240,1);
     background:#ffcc33;
 }
-
+// end login
 a:hover {
     text-decoration: none;
 }
@@ -46,8 +45,6 @@ h3{
 hr{
     border: 1px solid #000;
 }
-
-
 
 
 
